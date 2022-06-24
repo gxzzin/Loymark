@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "0fn8oWgC41XmmpggBOZZGthEgeKFom3HyRtnI8b/UGwoua0ocZdJxkDLi8KEP5do0mIfv+0sWgt9Qh0NFusVoQ==",
+  "dgSpecHash": "peNoqR5uJACuFn4dyy2FxFx7r3wCsSqHY+XZVHdh6E9istaySJsKr5VzboNeatJ2Ca3fNI/eAOx+XgwrLomjPg==",
   "success": true,
   "projectFilePath": "C:\\Loymark\\Backend\\UsersControl\\UsersControl.csproj",
   "expectedPackageFiles": [
@@ -14,6 +14,7 @@
     "C:\\Users\\bryga\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.17\\microsoft.entityframeworkcore.abstractions.5.0.17.nupkg.sha512",
     "C:\\Users\\bryga\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\5.0.17\\microsoft.entityframeworkcore.analyzers.5.0.17.nupkg.sha512",
     "C:\\Users\\bryga\\.nuget\\packages\\microsoft.entityframeworkcore.design\\5.0.17\\microsoft.entityframeworkcore.design.5.0.17.nupkg.sha512",
+    "C:\\Users\\bryga\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\5.0.17\\microsoft.entityframeworkcore.inmemory.5.0.17.nupkg.sha512",
     "C:\\Users\\bryga\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\5.0.17\\microsoft.entityframeworkcore.relational.5.0.17.nupkg.sha512",
     "C:\\Users\\bryga\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\5.0.17\\microsoft.entityframeworkcore.sqlserver.5.0.17.nupkg.sha512",
     "C:\\Users\\bryga\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\5.0.0\\microsoft.extensions.caching.abstractions.5.0.0.nupkg.sha512",
