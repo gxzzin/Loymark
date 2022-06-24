@@ -13,13 +13,12 @@ namespace UsersControl.Models
 
         [Required]
         [StringLength(maximumLength: 100)]
-        // [RegularExpression(pattern: @"")]
         public string CountryName { get; set; }
 
         [Required]
-        [Display(Name = "Country Code (ISO 3166-1)")]
+        [Display(Name = "Country Code")]
         [StringLength(maximumLength: 100)]
-        public string ISO_3166_1 { get; set; }
+        public string Alpha3Code { get; set; }
 
         public virtual ICollection<User> Users { get; set; }
 

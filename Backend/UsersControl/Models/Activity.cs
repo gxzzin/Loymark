@@ -8,23 +8,24 @@ namespace UsersControl.Models
     public class Activity
     {
         [Key]
-        [Column(name: "Id_Activity")]
+        [Column(name: "id_activity")]
         public int Id { get; set; }
 
         [Display(Name = "Create Date")]
         [Required]
-        [Column(name: "Create_Date")]
+        [Column(name: "create_date")]
         public DateTime CreateDate { get; set; }
 
         [Display(Name = "User")]
         [Required]   
-        [Column(name: "Id_User")]
+        [Column(name: "id_user")]
         public int UserId { get; set; }
 
         [Display(Name = "Activity Description")]
         [Required]
         [StringLength(maximumLength: 100)]
-        public string Name { get; set; }
+        [Column(name: "activity_description")]
+        public string ActivityDescription { get; set; }
 
         // public virtual User User { get; set; }
     }

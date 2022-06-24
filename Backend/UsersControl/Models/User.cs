@@ -17,6 +17,7 @@ namespace UsersControl.Models
         public string Name { get; set; }
 
         [Required]
+        [StringLength(maximumLength: 100)]
         [Display(Name = "Last Name")]
         // [RegularExpression(pattern: @"")]|
         public string LastName { get; set; }
@@ -34,13 +35,16 @@ namespace UsersControl.Models
 
 
         [Display(Name = "Residence Country")]
-        [Required]        
+        [Required]
         public int CountryId { get; set; }
 
 
         [Required]
         [Display(Name = "Would you like to receive Information?")]
         public bool SendNews { get; set; }
+
+        public virtual Country Country { get; set; }
+
 
         // public virtual ICollection<Activity> Activities { get; set; }
 

@@ -11,7 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using UsersControl.Context;
+using UsersControl.Data;
+using UsersControl.Models;
 
 namespace UsersControl
 {
@@ -27,8 +28,11 @@ namespace UsersControl
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<UsersControlDbContext>(options => options.UseInMemoryDatabase("InMemory"));
+            // services.AddDbContext<UsersControlDbContext>(options => options.UseSql("InMemory"));
+            services.AddDbContext<UsersControlDbContext>(options =>  options.UseSqlServer(Configuration.GetConnectionString("LoymarkDbContext")));
+            services.AddScoped<IUserModelService, UserModelService>();
             services.AddControllers();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
