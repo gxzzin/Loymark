@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using UsersControl.Models;
 
@@ -15,46 +17,39 @@ namespace UsersControl.Data
             this.db = db;
         }
 
-        public IQueryable<User> GetAll()
+        public async Task<IEnumerable<User>> GetAll()
         {
-            return db.Users;
+            return await db.Users.ToListAsync();
         }
 
-        public IQueryable<User> GetFilteredPage(Expression<Func<User, bool>> predicate)
+        public async Task<IEnumerable<User>> GetFilteredPage(Expression<Func<User, bool>> predicate)
         {
-            return db.Users.Where(predicate);
+            return await db.Users.Where(predicate).ToListAsync();
         }
 
-        public User Find(int id)
+        public async Task<User> Find(int id)
         {
-            return db.Users.Find(id);
+            return await db.Users.FindAsync(id);
         }
 
-        public void Create(User user)
+        public async Task<User> Create(User user)
         {
-            db.Entry(user).State = EntityState.Added;
-            db.SaveChanges();
+            var result = await db.Users.AddAsync(user);
+            await db.SaveChangesAsync();
+            return result.Entity;
         }
 
-        public void Update(User userToUpdate)
+        public async Task<User> Update(User userToUpdate)
         {
-            try
-            {
-                db.Entry(userToUpdate).State = EntityState.Modified;
-                db.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            db.Entry(userToUpdate).State = EntityState.Modified;
+            await db.SaveChangesAsync();
+            return userToUpdate;
         }
 
-        public void Delete(User user)
+        public async Task Delete(User user)
         {
-
             db.Entry(user).State = EntityState.Deleted;
-            db.SaveChanges();
+            await db.SaveChangesAsync();
         }
-
     }
 }

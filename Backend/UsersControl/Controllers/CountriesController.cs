@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using UsersControl.Data;
@@ -21,9 +22,9 @@ namespace UsersControl.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<CountryReadDTO>> GetUsers()
+        public async Task<ActionResult<IEnumerable<CountryReadDTO>>> GetUsers()
         {
-            var models = modelService.GetAll().ToList();
+            var models = await modelService.GetAll();
             var dtos = mapper.Map<IEnumerable<CountryReadDTO>>(models);
 
             return Ok(dtos);

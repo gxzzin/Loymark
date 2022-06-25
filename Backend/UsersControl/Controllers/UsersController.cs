@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using UsersControl.Data;
@@ -23,49 +24,49 @@ namespace UsersControl.Controllers
 
 
         [HttpGet]
-        public ActionResult<IEnumerable<UserReadDTO>> GetUsers()
+        public async Task<ActionResult<IEnumerable<UserReadDTO>>> GetUsers()
         {
-            var models = modelService.GetAll().ToList();
+            var models = await modelService.GetAll();
             var dtos = mapper.Map<IEnumerable<UserReadDTO>>(models);
 
             return Ok(dtos);
         }
 
 
-        [HttpGet("{id}", Name = "GetUserById")]
-        public ActionResult<IEnumerable<UserReadDTO>> GetUserById(int id)
+        [HttpGet("{id:int}", Name = "GetUserById")]
+        public async Task<ActionResult<UserReadDTO>> GetUserById(int id)
         {
-            var userModel = modelService.Find(id);
+            var userModel = await modelService.Find(id);
             if (userModel != null)
             {
                 var userDTO = mapper.Map<UserReadDTO>(userModel);
-                return Ok(userDTO);   
+                return Ok(userDTO);
             }
-    
+
             return NotFound();
         }
 
 
-        [Route("Create")]
-        public ActionResult Create(UserCreateDTO createUserDTO)
+        [HttpPost]
+        public async Task<ActionResult<UserReadDTO>> CreateUser(UserCreateDTO createUserDTO)
         {
             var userModel = mapper.Map<User>(createUserDTO);
-            modelService.Create(userModel);
-            
+            await modelService.Create(userModel);
+
             var userReadDTO = mapper.Map<UserReadDTO>(userModel);
 
-            return CreatedAtRoute(nameof(GetUserById), new { Id = userReadDTO.Id}, userReadDTO);
+            return CreatedAtRoute(nameof(GetUserById), new { Id = userReadDTO.Id }, userReadDTO);
         }
 
 
-        [HttpPut("{id}", Name = "Update")]
-        public ActionResult Update(int id, UserUpdateDTO updateUserDTO)
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult> UpdateUser(int id, UserUpdateDTO updateUserDTO)
         {
-            var userModel = modelService.Find(id);
+            var userModel = await modelService.Find(id);
             if (userModel != null)
             {
                 mapper.Map<UserUpdateDTO, User>(updateUserDTO, userModel);
-                modelService.Update(userModel);
+                await modelService.Update(userModel);
                 return Ok();
             }
 
@@ -73,16 +74,16 @@ namespace UsersControl.Controllers
         }
 
 
-        [HttpDelete("{id}", Name = "Delete")]
-        public ActionResult<IEnumerable<UserReadDTO>> Delete(int id)
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult> DeleteUser(int id)
         {
-            var userModel = modelService.Find(id);
+            var userModel = await modelService.Find(id);
             if (userModel != null)
             {
-                modelService.Delete(userModel);
-                return Ok();   
+                await modelService.Delete(userModel);
+                return Ok();
             }
-    
+
             return NotFound();
         }
     }
