@@ -1,0 +1,35 @@
+@page
+@model IndexUserModel
+@{
+    ViewData["Title"] = "Users Control";
+}
+
+<div class="card border-secondary">
+    <div class="card-header bg-secondary text-white d-flex justify-content-between">
+        <h1 class="h4 mb-0">List of Users</h1>
+        <button type="button" class="btn btn-primary btn-sm font-weight-bold">
+            Create New
+        </button>
+    </div>
+    <div class="card-body">
+
+        <!-- Search Filters !-->
+        <div data-bind="template: { name: 'filter-users-template' }"></div>
+
+        <!-- Table: List of Users!-->
+        <div data-bind="template: { name: 'list-users-template' }"></div>
+
+
+    </div>
+</div>
+
+
+
+
+<partial name="~/Pages/Users/_FilterUsersTemplate.cshtml" />
+<partial name="~/Pages/Users/_ListUsersTemplate.cshtml" />
+<partial name="~/Pages/Users/_CRUDUsersTemplate.cshtml" />
+
+@section Scripts{
+    <script src="~/js/Users/IndexUser.js" asp-append-version="true"></script>
+}
