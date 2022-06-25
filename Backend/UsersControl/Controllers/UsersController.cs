@@ -13,7 +13,6 @@ namespace UsersControl.Controllers
     public class UsersController : ControllerBase
     {
         private readonly IUserModelService modelService;
-        
         private IMapper mapper;
 
         public UsersController(IUserModelService modelService, IMapper mapper)

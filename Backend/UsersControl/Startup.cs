@@ -31,6 +31,7 @@ namespace UsersControl
             // services.AddDbContext<UsersControlDbContext>(options => options.UseSql("InMemory"));
             services.AddDbContext<UsersControlDbContext>(options =>  options.UseSqlServer(Configuration.GetConnectionString("LoymarkDbContext")));
             services.AddScoped<IUserModelService, UserModelService>();
+            services.AddScoped<ICountryModelService, CountryModelService>();
             services.AddControllers();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
