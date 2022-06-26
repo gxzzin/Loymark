@@ -6,30 +6,41 @@
 
 <div class="card border-secondary">
     <div class="card-header bg-secondary text-white d-flex justify-content-between">
-        <h1 class="h4 mb-0">List of Users</h1>
+        <h1 class="h4 mb-0">
+            <span class="fas fa-users"></span>
+            List of Users
+        </h1>
         <button type="button" class="btn btn-primary btn-sm font-weight-bold">
+            <span class="fas fa-plus"></span>
             Create New
         </button>
     </div>
     <div class="card-body">
-
+        
         <!-- Search Filters !-->
-        <div data-bind="template: { name: 'filter-users-template' }"></div>
+        <div class="mb-2" data-bind="template: { name: 'filter-users-template', data: searchUserViewModel }"></div>
+
+        <!--Spinner: Loading Users-->
+        <loading-spinner params="loading: loadingUsers, message: 'Loading Users...'"></loading-spinner>
 
         <!-- Table: List of Users!-->
-        <div data-bind="template: { name: 'list-users-template' }"></div>
-
+        <div class="mb-2" data-bind="template: { name: 'list-users-template', if: !loadingUsers() && availableUsers().length > 0 }"></div>
 
     </div>
 </div>
 
 
+@await Html.PartialAsync("~/Pages/Shared/_LoadingSpinnerTemplate.cshtml")
 
+@await Html.PartialAsync("~/Pages/Users/_FilterUsersTemplate.cshtml", Model.SearchUserViewModel)
 
-<partial name="~/Pages/Users/_FilterUsersTemplate.cshtml" />
-<partial name="~/Pages/Users/_ListUsersTemplate.cshtml" />
-<partial name="~/Pages/Users/_CRUDUsersTemplate.cshtml" />
+@await Html.PartialAsync("~/Pages/Users/_ListUsersTemplate.cshtml")
+
+@await Html.PartialAsync("~/Pages/Users/_CRUDUsersTemplate.cshtml")
+
 
 @section Scripts{
-    <script src="~/js/Users/IndexUser.js" asp-append-version="true"></script>
+<script src="~/js/Users/SearchUserViewModel.js" asp-append-version="true"></script>
+<script src="~/js/Users/UserReadViewModel.js" asp-append-version="true"></script>
+<script src="~/js/Users/IndexUser.js" asp-append-version="true"></script>
 }

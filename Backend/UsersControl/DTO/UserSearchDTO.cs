@@ -1,16 +1,14 @@
 using System.ComponentModel.DataAnnotations;
-using UsersControlWebApp.ViewModels.Shared;
 
-namespace UsersControlWebApp.ViewModels.Users
+namespace UsersControl.DTO
 {
     /// <summary>
-    /// ViewModel for search user records.
+    /// Data Transfer Objecto to Search Users records.
     /// </summary>
-    public class SearchUserViewModel : SearchViewModel
+    public class UserSearchDTO : SearchDTO
     {
         [Display(Name = "Name")]
         public string Name { get; set; }
-
 
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
@@ -18,9 +16,9 @@ namespace UsersControlWebApp.ViewModels.Users
         [Display(Name = "Country")]
         public int? CountryId { get; set; }
 
-        public SearchUserViewModel() : base()
+        public UserSearchDTO() : base()
         {
-
+            
         }
     }
 }

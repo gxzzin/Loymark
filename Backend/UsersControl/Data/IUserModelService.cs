@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using UsersControl.DTO;
 using UsersControl.Models;
 
 namespace UsersControl.Data
@@ -16,36 +17,30 @@ namespace UsersControl.Data
         /// 
         /// </summary>
         /// <typeparam name="User"></typeparam>
-        Task<IEnumerable<User>> GetAll();
+        Task<IEnumerable<User>> GetUsers(UserSearchDTO searchDTO);
 
         /// <summary>
         /// 
         /// </summary>
         /// <typeparam name="User"></typeparam>
-        Task<IEnumerable<User>> GetFilteredPage(Expression<Func<User, bool>> predicate);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="User"></typeparam>
-        Task<User> Find(int id);
+        Task<User> GetUserById(int id);
 
         /// <summary>
         /// 
         /// </summary>
         /// <typeparam name="user"></typeparam>
-        Task<User> Create(User user);
+        Task<User> CreateUser(User user);
 
         /// <summary>
         /// 
         /// </summary>
         /// <typeparam name="TEntry"></typeparam>
-        Task<User> Update(User user);
+        Task<User> UpdateUser(User user);
 
         /// <summary>
         /// 
         /// </summary>
         /// <typeparam name="id"></typeparam>
-        Task Delete(User user);
+        Task DeleteUser(User user);
     }
 }

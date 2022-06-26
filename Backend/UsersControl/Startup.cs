@@ -42,9 +42,17 @@ namespace UsersControl
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-            }
+            } 
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
+
+            app.UseCors(builder => 
+            {
+                builder.AllowAnyHeader()
+                       .WithOrigins(Configuration["AllowedOrigins"].Split(";").ToArray())
+                       .WithMethods("GET")
+                       .Build();
+            });
 
             app.UseRouting();
 

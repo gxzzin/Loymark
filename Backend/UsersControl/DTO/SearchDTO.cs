@@ -1,15 +1,12 @@
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace UsersControlWebApp.ViewModels.Shared
+namespace UsersControl.DTO
 {
     /// <summary>
-    ///Clase abstracta que se utiliza para proporcionar los detalles de
-    ///filtrado, dirección de ordenamiento, página actual, número de registros por página, etc en pantallas de busqueda.
+    /// Data Transfer Object Base Class to Search DTO's.
     /// </summary>
-    public abstract class SearchViewModel
+    public abstract class SearchDTO
     {
-
         /// <summary>
         /// Página actual solicitada.
         /// </summary>
@@ -47,7 +44,7 @@ namespace UsersControlWebApp.ViewModels.Shared
         [Display(Name = "Total Pages")]
         public int TotalPages { get; set; }
 
-        public SearchViewModel()
+        public SearchDTO()
         {
             Page = 1;
             SortColumn = "Id";
@@ -55,4 +52,4 @@ namespace UsersControlWebApp.ViewModels.Shared
             RecordsPerPage = 10;
         }
     }
-}   
+}

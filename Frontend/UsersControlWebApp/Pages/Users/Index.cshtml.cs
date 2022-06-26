@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using UsersControlWebApp.ViewModels.Users;
 
 namespace UsersControlWebApp.Pages
 {
@@ -15,7 +16,10 @@ namespace UsersControlWebApp.Pages
         public IndexUserModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
+            SearchUserViewModel = new SearchUserViewModel();
         }
+
+        public SearchUserViewModel SearchUserViewModel { get; set; }
 
         public void OnGet()
         {

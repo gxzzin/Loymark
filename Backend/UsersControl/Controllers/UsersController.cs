@@ -24,19 +24,26 @@ namespace UsersControl.Controllers
 
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserReadDTO>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<UserSearchResultDTO>>> GetUsers([FromQuery] UserSearchDTO searchDTO)
         {
-            var models = await modelService.GetAll();
+            //Get filterd user models...
+            var models = await modelService.GetUsers(searchDTO);
+
+            //Map models to dtos...
             var dtos = mapper.Map<IEnumerable<UserReadDTO>>(models);
 
-            return Ok(dtos);
+            //Prepare data...
+            var searchResultsDTO = new UserSearchResultDTO(searchDTO.Page, searchDTO.TotalRecords, searchDTO.TotalPages, dtos);
+
+            //Return data...
+            return Ok(searchResultsDTO);
         }
 
 
         [HttpGet("{id:int}", Name = "GetUserById")]
         public async Task<ActionResult<UserReadDTO>> GetUserById(int id)
         {
-            var userModel = await modelService.Find(id);
+            var userModel = await modelService.GetUserById(id);
             if (userModel != null)
             {
                 var userDTO = mapper.Map<UserReadDTO>(userModel);
@@ -51,7 +58,7 @@ namespace UsersControl.Controllers
         public async Task<ActionResult<UserReadDTO>> CreateUser(UserCreateDTO createUserDTO)
         {
             var userModel = mapper.Map<User>(createUserDTO);
-            await modelService.Create(userModel);
+            await modelService.CreateUser(userModel);
 
             var userReadDTO = mapper.Map<UserReadDTO>(userModel);
 
@@ -62,11 +69,11 @@ namespace UsersControl.Controllers
         [HttpPut("{id:int}")]
         public async Task<ActionResult> UpdateUser(int id, UserUpdateDTO updateUserDTO)
         {
-            var userModel = await modelService.Find(id);
+            var userModel = await modelService.GetUserById(id);
             if (userModel != null)
             {
                 mapper.Map<UserUpdateDTO, User>(updateUserDTO, userModel);
-                await modelService.Update(userModel);
+                await modelService.UpdateUser(userModel);
                 return Ok();
             }
 
@@ -77,10 +84,10 @@ namespace UsersControl.Controllers
         [HttpDelete("{id:int}")]
         public async Task<ActionResult> DeleteUser(int id)
         {
-            var userModel = await modelService.Find(id);
+            var userModel = await modelService.GetUserById(id);
             if (userModel != null)
             {
-                await modelService.Delete(userModel);
+                await modelService.DeleteUser(userModel);
                 return Ok();
             }
 

@@ -1,0 +1,10 @@
+{
+    "typeAcquisition": {
+        "include":[
+            "jquery",
+            "knockout",
+            "jquery.validation",
+            "jquery.blockui"
+        ]        
+    }
+}

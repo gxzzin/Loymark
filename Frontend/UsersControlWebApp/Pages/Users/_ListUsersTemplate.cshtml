@@ -1,30 +1,31 @@
 <template id="list-users-template">
-    <table class="table table-sm">
-        <thead>
+    <table class="table table-sm table-hover">
+        <thead class="thead-light">
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th class="text-center font-weight-bold" scope="col">#</th>
+                <th class="text-left" scope="col">Name</th>
+                <th class="text-left" scope="col">Last Name</th>
+                <th class="text-left" scope="col">Country</th>
+                <th class="text-center" scope="col">Actions</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody data-bind="foreach: $root.availableUsers">
             <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>twitter</td>
+                <th class="text-center align-middle font-weight-bold" scope="row" data-bind="text: $index() + 1"></th>
+                <td class="text-left" data-bind="text: name"></td>
+                <td class="text-left" data-bind="text: lastName"></td>
+                <td class="text-left" data-bind="text: countryNameAndCode"></td>
+                <td class="text-center align-middle">
+                    <button class="btn btn-outline-danger btn-sm">
+                        <span class="fas fa-trash-alt"></span>
+                    </button>
+                     <button class="btn btn-outline-secondary btn-sm">
+                        <span class="fas fa-info-circle"></span>
+                    </button>
+                     <button class="btn btn-outline-info btn-sm">
+                        <span class="fas fa-edit"></span>
+                    </button>
+                </td>
             </tr>
         </tbody>
     </table>

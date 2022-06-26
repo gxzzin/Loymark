@@ -1,0 +1,11 @@
+<template id="loading-spinner-template">
+    <!--ko if: loading-->
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="spinner-border spinner-border-sm text-success" role="status">
+            <span class="sr-only" data-bind="text: message">Loading...</span>
+        </div>
+        <strong class="ml-2" data-bind="text: message">Loading...</strong>
+    </div>
+    </div>
+    <!--/ko-->
+</template>
