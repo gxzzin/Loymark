@@ -1,9 +1,9 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace UsersControl.DTO
+namespace UsersControlWebApp.ViewModels.Users
 {
-    public class UserCreateDTO
+    public class CRUDUserViewModel
     {
         [Required]
         [StringLength(maximumLength: 100)]
@@ -30,5 +30,6 @@ namespace UsersControl.DTO
         [Required]
         [Display(Name = "Residence Country")]
         public int CountryId { get; set; }
+
     }
 }

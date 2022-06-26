@@ -1,3 +1,81 @@
+@model UsersControlWebApp.ViewModels.Users.CRUDUserViewModel
+
 <template id="crud-users-template">
-    <p>I AM A PARTIAL VIEW!</p>
+
+    <form id="frm-crud-user" action="#" data-bind="with: DataViewModel">
+        <!-- Name !-->
+        <div class="row mb-1">
+            <div class="col">
+                <label asp-for="Name" class="font-weight-bold mb-0"></label>
+                <input type="text" asp-for="Name" class="form-control form-control-sm"
+                    placeholder="Type Name" data-bind="value: name">
+                <span asp-validation-for="Name" class="text-danger small"></span>
+            </div>
+        </div>
+
+        <!-- Last Name !-->
+        <div class="row mb-1">
+            <div class="col">
+                <label asp-for="LastName" class="font-weight-bold mb-0"></label>
+                <input type="text" asp-for="LastName" class="form-control form-control-sm"
+                    placeholder="Type Last Name" data-bind="value: lastName">
+                <span asp-validation-for="LastName" class="text-danger small"></span>
+            </div>
+        </div>
+
+        <!-- Email !-->
+        <div class="row mb-1">
+            <div class="col">
+                <label asp-for="Email" class="font-weight-bold mb-0"></label>
+                <input asp-for="Email" class="form-control form-control-sm"
+                    placeholder="Type Email" data-bind="value: email">
+                <span asp-validation-for="Email" class="text-danger small"></span>
+            </div>
+        </div>
+
+        <!-- Birthday !-->
+        <div class="row mb-1">
+            <div class="col">
+                <label asp-for="Birthday" class="font-weight-bold mb-0"></label>
+                <input type="text" asp-for="Birthday" class="form-control form-control-sm"
+                    placeholder="Type Birthday (YYYY-MM-DD)" data-bind="value: birthday">
+                <span asp-validation-for="Birthday" class="text-danger small"></span>
+            </div>
+        </div>
+
+        <!-- Telephone Number !-->
+        <div class="row mb-1">
+            <div class="col">
+                <label asp-for="TelephoneNumber" class="font-weight-bold mb-0"></label>
+                <input asp-for="TelephoneNumber" class="form-control form-control-sm"
+                    placeholder="Type Telephone Number" data-bind="value: telephoneNumber">
+                <span asp-validation-for="TelephoneNumber" class="text-danger small"></span>
+            </div>
+        </div>
+
+        <!--Country !-->
+        <div class="row mb-1">
+            <div class="col">
+                <label asp-for="CountryId" class="font-weight-bold mb-0"></label>
+                <select asp-for="CountryId" class="form-control form-control-sm" data-bind="options: $root.availableCountries,
+                                           optionsCaption: '-- all --',
+                                           optionsText: 'nameAndCode',
+                                           optionsValue: 'id',
+                                           value: countryId">
+                </select>
+                <span asp-validation-for="CountryId" class="text-danger small"></span>
+            </div>
+        </div>
+
+        <!-- Send Me News !-->
+        <div class="row mb-1">
+            <div class="col">
+                <label asp-for="SendNews" class="font-weight-bold mb-0"></label>
+                <input asp-for="SendNews" class="form-control form-control-sm"
+                    placeholder="Name" data-bind="checked: sendNews">
+                <span asp-validation-for="SendNews" class="text-danger small"></span>
+            </div>
+        </div>
+    </form>
+
 </template>

@@ -75,6 +75,8 @@ C:\Users\bgazo\source\repos\Loymark\Backend\UsersControl\bin\Debug\netcoreapp3.1
 C:\Users\bgazo\source\repos\Loymark\Backend\UsersControl\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\bgazo\source\repos\Loymark\Backend\UsersControl\bin\Debug\netcoreapp3.1\Castle.Core.dll
 C:\Users\bgazo\source\repos\Loymark\Backend\UsersControl\bin\Debug\netcoreapp3.1\Humanizer.dll
+C:\Users\bgazo\source\repos\Loymark\Backend\UsersControl\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\bgazo\source\repos\Loymark\Backend\UsersControl\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\bgazo\source\repos\Loymark\Backend\UsersControl\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 C:\Users\bgazo\source\repos\Loymark\Backend\UsersControl\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
 C:\Users\bgazo\source\repos\Loymark\Backend\UsersControl\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -99,6 +101,7 @@ C:\Users\bgazo\source\repos\Loymark\Backend\UsersControl\bin\Debug\netcoreapp3.1
 C:\Users\bgazo\source\repos\Loymark\Backend\UsersControl\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\bgazo\source\repos\Loymark\Backend\UsersControl\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
 C:\Users\bgazo\source\repos\Loymark\Backend\UsersControl\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\bgazo\source\repos\Loymark\Backend\UsersControl\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 C:\Users\bgazo\source\repos\Loymark\Backend\UsersControl\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
 C:\Users\bgazo\source\repos\Loymark\Backend\UsersControl\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
 C:\Users\bgazo\source\repos\Loymark\Backend\UsersControl\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll

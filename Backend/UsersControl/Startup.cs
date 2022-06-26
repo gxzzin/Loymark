@@ -32,7 +32,7 @@ namespace UsersControl
             services.AddDbContext<UsersControlDbContext>(options =>  options.UseSqlServer(Configuration.GetConnectionString("LoymarkDbContext")));
             services.AddScoped<IUserModelService, UserModelService>();
             services.AddScoped<ICountryModelService, CountryModelService>();
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
 
@@ -50,7 +50,7 @@ namespace UsersControl
             {
                 builder.AllowAnyHeader()
                        .WithOrigins(Configuration["AllowedOrigins"].Split(";").ToArray())
-                       .WithMethods("GET")
+                       .WithMethods("GET", "POST", "PUT", "DELETE")
                        .Build();
             });
 

@@ -74,7 +74,7 @@ namespace UsersControl.Controllers
             {
                 mapper.Map<UserUpdateDTO, User>(updateUserDTO, userModel);
                 await modelService.UpdateUser(userModel);
-                return Ok();
+                return NoContent();
             }
 
             return NotFound();
@@ -88,7 +88,7 @@ namespace UsersControl.Controllers
             if (userModel != null)
             {
                 await modelService.DeleteUser(userModel);
-                return Ok();
+                return NoContent();
             }
 
             return NotFound();

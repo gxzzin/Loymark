@@ -17,9 +17,12 @@ namespace UsersControlWebApp.Pages
         {
             _logger = logger;
             SearchUserViewModel = new SearchUserViewModel();
+            CRUDUserViewModel = new CRUDUserViewModel();
         }
 
         public SearchUserViewModel SearchUserViewModel { get; set; }
+
+        public CRUDUserViewModel CRUDUserViewModel { get; set; }
 
         public void OnGet()
         {

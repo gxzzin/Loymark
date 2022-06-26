@@ -16,6 +16,8 @@ namespace UsersControl.DTO
 
         public bool SendNews { get; set; }
 
+        public int CountryId { get; set; }
+        
         public string CountryNameAndCode { get; set; }
     }
 }

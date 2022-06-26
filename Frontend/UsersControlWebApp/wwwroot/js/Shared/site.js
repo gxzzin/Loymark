@@ -10,7 +10,13 @@ const UsersControlWebApp = {
         let value = input.val();
         input.remove();
         return value;
-    })()
+    })(),
+    //Funcion que parse validaciones jquery en contenido dinamico agregado al documento.
+    ParseDynamicContent: function (selector) {
+        if ($.validator) {
+            $.validator.unobtrusive.parseDynamicContent(selector)
+        }
+    },
 };
 
 //Agregar llamadas del web api...
@@ -22,9 +28,59 @@ const UsersControlWebApp = {
 
                 return $.ajax({
                     url: UsersControlWebApp.apiUrl + params.url,
-                    method: params.method || "get",
+                    method: "get",
                     data: params.data,
-                    dataType: params.dataType || "json",
+                    dataType: "json",
+                    beforeSend: params.beforeSend,
+                    complete: params.complete
+                });
+            },
+            getUserById: function (params) {
+                params.url = params.url || "Users";
+
+                return $.ajax({
+                    url: UsersControlWebApp.apiUrl + params.url,
+                    method: "get",
+                    data: params.data,
+                    dataType: "json",
+                    beforeSend: params.beforeSend,
+                    complete: params.complete
+                });
+            },
+            createUser: function (params) {
+                params.url = params.url || "Users";
+
+                return $.ajax({
+                    url: UsersControlWebApp.apiUrl + params.url,
+                    method: "post",
+                    data: params.data,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    beforeSend: params.beforeSend,
+                    complete: params.complete
+                });
+            },
+            updateUser: function (params) {
+                params.url = params.url || "Users";
+
+                return $.ajax({
+                    url: UsersControlWebApp.apiUrl + params.url,
+                    method: "put",
+                    data: params.data,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    beforeSend: params.beforeSend,
+                    complete: params.complete
+                });
+            },
+            deleteUser: function (params) {
+                params.url = params.url || "Users";
+
+                return $.ajax({
+                    url: UsersControlWebApp.apiUrl + params.url,
+                    method: "delete",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
                     beforeSend: params.beforeSend,
                     complete: params.complete
                 });

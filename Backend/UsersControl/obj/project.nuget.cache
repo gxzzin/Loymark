@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "UKPVXebncGKgD5V+eu0UA0qZp6SS7Lro8Y3s5P4/KTh6OHPaIMNF/jzguE12vMILWUZox3fpdmK1V8Jz6B0R+A==",
+  "dgSpecHash": "bw80g8sPppeJ6mZpUWXJDZzcD+K4FVa+a8WBN/5FaD/78mvIt04AFK5pnozz+MbHciYBaLDEhVMDiaFlqC7M9w==",
   "success": true,
   "projectFilePath": "C:\\Users\\bgazo\\source\\repos\\Loymark\\Backend\\UsersControl\\UsersControl.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,8 @@
     "C:\\Users\\bgazo\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "C:\\Users\\bgazo\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\bgazo\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\bgazo\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.26\\microsoft.aspnetcore.jsonpatch.3.1.26.nupkg.sha512",
+    "C:\\Users\\bgazo\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.26\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.26.nupkg.sha512",
     "C:\\Users\\bgazo\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\bgazo\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\bgazo\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",
@@ -40,7 +42,8 @@
     "C:\\Users\\bgazo\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\bgazo\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\bgazo\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
-    "C:\\Users\\bgazo\\.nuget\\packages\\newtonsoft.json\\10.0.1\\newtonsoft.json.10.0.1.nupkg.sha512",
+    "C:\\Users\\bgazo\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
+    "C:\\Users\\bgazo\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "C:\\Users\\bgazo\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\bgazo\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\bgazo\\.nuget\\packages\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",

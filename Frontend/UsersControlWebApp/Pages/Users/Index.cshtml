@@ -10,7 +10,7 @@
             <span class="fas fa-users"></span>
             List of Users
         </h1>
-        <button type="button" class="btn btn-primary btn-sm font-weight-bold">
+        <button type="button" class="btn btn-primary btn-sm font-weight-bold" data-bind="click: () => showCRUDUserModal('create', null);">
             <span class="fas fa-plus"></span>
             Create New
         </button>
@@ -30,17 +30,25 @@
 </div>
 
 
+<!--Confirm Action Component-->
+<confirm-action-modal params="viewModel: confirmActionModal"></confirm-action-modal>
+
+
+@await Html.PartialAsync("~/Pages/Shared/_ConfirmActionModalTemplate.cshtml")
+
 @await Html.PartialAsync("~/Pages/Shared/_LoadingSpinnerTemplate.cshtml")
 
 @await Html.PartialAsync("~/Pages/Users/_FilterUsersTemplate.cshtml", Model.SearchUserViewModel)
 
 @await Html.PartialAsync("~/Pages/Users/_ListUsersTemplate.cshtml")
 
-@await Html.PartialAsync("~/Pages/Users/_CRUDUsersTemplate.cshtml")
+@await Html.PartialAsync("~/Pages/Users/_CRUDUsersTemplate.cshtml", Model.CRUDUserViewModel)
 
 
 @section Scripts{
-<script src="~/js/Users/SearchUserViewModel.js" asp-append-version="true"></script>
-<script src="~/js/Users/UserReadViewModel.js" asp-append-version="true"></script>
-<script src="~/js/Users/IndexUser.js" asp-append-version="true"></script>
+    @await Html.PartialAsync("~/Pages/Shared/_ValidationScriptsPartial.cshtml")
+    <script src="~/js/Users/SearchUserViewModel.js" asp-append-version="true"></script>
+    <script src="~/js/Users/UserViewModel.js" asp-append-version="true"></script>
+    <script src="~/js/Users/CRUDUserViewModel.js" asp-append-version="true"></script>
+    <script src="~/js/Users/IndexUser.js" asp-append-version="true"></script>
 }

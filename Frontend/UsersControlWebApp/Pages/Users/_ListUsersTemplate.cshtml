@@ -16,13 +16,13 @@
                 <td class="text-left" data-bind="text: lastName"></td>
                 <td class="text-left" data-bind="text: countryNameAndCode"></td>
                 <td class="text-center align-middle">
-                    <button class="btn btn-outline-danger btn-sm">
+                    <button type="button" class="btn btn-outline-danger btn-sm" data-bind="click: () => $root.showCRUDUserModal('delete', $data);">
                         <span class="fas fa-trash-alt"></span>
                     </button>
-                     <button class="btn btn-outline-secondary btn-sm">
+                     <button type="button" class="btn btn-outline-secondary btn-sm" data-bind="click: () => $root.showCRUDUserModal('details', $data);">
                         <span class="fas fa-info-circle"></span>
                     </button>
-                     <button class="btn btn-outline-info btn-sm">
+                     <button type="button" class="btn btn-outline-success btn-sm" data-bind="click: () => $root.showCRUDUserModal('edit', $data);">
                         <span class="fas fa-edit"></span>
                     </button>
                 </td>

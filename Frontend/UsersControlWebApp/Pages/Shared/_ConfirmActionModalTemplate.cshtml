@@ -1,0 +1,53 @@
+<template id="confirm-action-modal-template">
+    <!-- ko with: ConfirmActionViewModel -->
+    <div class="modal" tabindex="-1"  role="dialog" aria-labelledby="modal" aria-hidden="true" data-backdrop="static"
+         data-keyboard="true" data-bind="attr: { id: modalId }, css: { 'modal-fullscreen': ModalFullscreen }">
+        <div class="modal-dialog" role="document" data-bind="class: modalSizeClass, css: { 'modal-dialog-centered' : modalCentered }">
+            <div class="modal-content">
+                <!-- #region Título del modal -->
+                <div class="modal-header justify-content-between text-white" data-bind="css: modalHeaderBgClass">                    
+                    <h5 class="modal-title text-center font-weight-bold" data-bind="text: title"></h5>
+                    <span data-bind="html: modalHeaderIcon"></span>
+                </div>
+                <!-- #endregion -->
+
+                <!-- #region Cuerpo del Modal -->
+                <div class="modal-body text-justify" data-bind="css: messageAlignmentClass">
+                    
+                    <!--ko if: message() && message().trim().length > 0-->
+                    <p data-bind="text: message, css: messageClass"></p>
+                    <!--/ko-->
+
+                    <!--ko if: template() !== null-->
+                    <div data-bind="template: template">
+                        <!--Template Goes Here...-->
+                    </div>
+                    <!--/ko-->
+
+                </div>
+                <!-- #endregion -->
+
+                <!-- #region Aciones -->
+                <div class="modal-footer justify-content-between">
+                    <div class="col">
+                        <button id="btnCancel" type="button" class="btn btn-secondary btn-block mt-0"
+                                data-bind="click: cancelAction" tabindex="-1">
+                            <span class="fas fa-times-circle"></span>
+                            <span data-bind="text: cancelButtonText"></span>
+                        </button>
+                    </div>
+                    <!--ko if: ShowConfirmButton()-->
+                    <div class="col">
+                        <button id="btnConfirm" type="button" class="btn-block mt-0" data-bind="css: modalConfirmButtonClass, click: confirmAction">
+                            <span data-bind="html: modalConfirmButtonIcon"></span>
+                            <span data-bind="text: confirmButtonText"></span>
+                        </button>
+                    </div>
+                    <!--/ko-->
+                </div>
+                <!-- #endregion -->
+            </div>
+        </div>
+    </div>
+    <!-- /ko -->
+</template>
