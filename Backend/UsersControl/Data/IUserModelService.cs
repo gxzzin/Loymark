@@ -42,5 +42,34 @@ namespace UsersControl.Data
         /// </summary>
         /// <typeparam name="id"></typeparam>
         Task DeleteUser(User user);
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        string ValidateBeforeCreateOrUpdate(User user);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        string ValidateBeforeCreate(User user);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        string ValidateBeforeUpdate(User user);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        string ValidateBeforeDelete(User user);
     }
 }

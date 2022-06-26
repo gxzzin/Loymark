@@ -23,11 +23,15 @@ namespace UsersControl.DTO
         [Required]
         public DateTime Birthday { get; set; }
 
+        [Range(1, int.MaxValue)]
         public int? TelephoneNumber { get; set; }
 
         [Display(Name = "Would you like to receive information?")]
         public bool SendNews { get; set; }
 
+        [Required]
+        [Display(Name = "Residence Country")]
+        [Range(1, int.MaxValue, ErrorMessage = "Please selected a country.")]
         public int CountryId { get; set; }
     }
 }

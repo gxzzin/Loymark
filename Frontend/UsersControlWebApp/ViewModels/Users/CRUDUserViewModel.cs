@@ -25,6 +25,7 @@ namespace UsersControlWebApp.ViewModels.Users
         public DateTime Birthday { get; set; }
 
         [Display(Name = "Telephone Number")]
+        [Range(1, int.MaxValue)]
         public int? TelephoneNumber { get; set; }
 
         [Required]
@@ -33,6 +34,7 @@ namespace UsersControlWebApp.ViewModels.Users
 
         [Required]
         [Display(Name = "Residence Country")]
+        [Range(1, int.MaxValue, ErrorMessage = "Please selected a country.")]
         public int CountryId { get; set; }
 
     }

@@ -112,13 +112,88 @@ namespace UsersControl.Data
             db.Entry(user).State = EntityState.Deleted;
             await db.SaveChangesAsync();
         }
-    
 
-        public string ValidateBeforeCreate(UserCreateDTO user)
+
+        /// <summary>
+        /// Validate common rules when creating or updating an user.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public string ValidateBeforeCreateOrUpdate(User user)
         {
             var errorMessage = string.Empty;
+
+            //We don't wannt people from the future...
+            if (user.Birthday.Date >= DateTime.Now.Date)
+            {
+                errorMessage = $"Please, type a valid birthday. Birthday must be less than today's date.";
+                return errorMessage;
+            }
+
+            //Validate unique email...
+            if (db.Users.Any(x => x.Id != user.Id && x.Email.ToLower().Trim() == user.Email.ToLower().Trim()))
+            {
+                errorMessage = $"The email {user.Email} is being used by another user. Please type a different and unique email.";
+                return errorMessage;
+            }
+
             return errorMessage;
         }
-    
+
+        /// <summary>
+        /// Validate rules when creating a new user.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public string ValidateBeforeCreate(User user)
+        {
+            var errorMessage = ValidateBeforeCreateOrUpdate(user);
+
+            if (!string.IsNullOrEmpty(errorMessage))
+            {
+                return errorMessage;
+            }
+            //Si fuese necesario se podria seguir agregando validaciones propias del crear...
+
+            return errorMessage;
+        }
+
+        /// <summary>
+        /// Validate rules when updating a user.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public string ValidateBeforeUpdate(User user)
+        {
+            var errorMessage = ValidateBeforeCreateOrUpdate(user);
+
+            if (!string.IsNullOrEmpty(errorMessage))
+            {
+                return errorMessage;
+            }
+            //Si fuese necesario se podria seguir agregando validaciones propias del update...
+
+            return errorMessage;
+        }
+
+        /// <summary>
+        /// Validate rules when deleting a user.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public string ValidateBeforeDelete(User user)
+        {
+            var errorMessage = string.Empty;
+
+            //Si se quisiera validar integridad referencial entre la relacion User -> Activities..
+            if (user.Activities.Any())
+            {
+                errorMessage = $"Sorry, we can not delete the user because it has {user.Activities.Count} activities.";
+                return errorMessage;
+            }
+
+            return errorMessage;
+        }
+
     }
 }

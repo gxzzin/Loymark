@@ -31,17 +31,20 @@ namespace UsersControl.Models
         public DateTime Birthday { get; set; }
 
         [Display(Name = "Telephone")]
+        [Range(1, int.MaxValue)]
         public int? TelephoneNumber { get; set; }
 
 
-        [Display(Name = "Residence Country")]
         [Required]
+        [Display(Name = "Residence Country")]
+        [Range(1, int.MaxValue, ErrorMessage = "Please selected a country.")]
         public int CountryId { get; set; }
 
 
         [Required]
         [Display(Name = "Would you like to receive Information?")]
         public bool SendNews { get; set; }
+
 
         public virtual Country Country { get; set; }
 
