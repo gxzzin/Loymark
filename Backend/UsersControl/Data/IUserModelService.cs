@@ -16,7 +16,7 @@ namespace UsersControl.Data
         /// <summary>
         /// 
         /// </summary>
-        /// <typeparam name="User"></typeparam>
+        /// <typeparam name="searchDTO"></typeparam>
         Task<IEnumerable<User>> GetUsers(UserSearchDTO searchDTO);
 
         /// <summary>

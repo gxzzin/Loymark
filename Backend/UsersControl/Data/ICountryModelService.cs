@@ -9,11 +9,11 @@ namespace UsersControl.Data
 {
     public interface ICountryModelService
     {
-         /// <summary>
-        /// 
+        /// <summary>
+        /// Get all countries in database.
         /// </summary>
         /// <typeparam name="Country"></typeparam>
-        Task<IEnumerable<Country>> GetAll();
+        Task<IEnumerable<Country>> GetCountries();
 
     }
 }

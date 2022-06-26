@@ -24,7 +24,7 @@ namespace UsersControl.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CountryReadDTO>>> GetUsers()
         {
-            var models = await modelService.GetAll();
+            var models = await modelService.GetCountries();
             var dtos = mapper.Map<IEnumerable<CountryReadDTO>>(models);
 
             return Ok(dtos);

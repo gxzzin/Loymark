@@ -32,6 +32,7 @@ namespace UsersControl
             services.AddDbContext<UsersControlDbContext>(options =>  options.UseSqlServer(Configuration.GetConnectionString("LoymarkDbContext")));
             services.AddScoped<IUserModelService, UserModelService>();
             services.AddScoped<ICountryModelService, CountryModelService>();
+            services.AddScoped<IActivityModelService, ActivityModelService>();
             services.AddControllers().AddNewtonsoftJson();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }

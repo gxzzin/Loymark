@@ -22,7 +22,7 @@ namespace UsersControl.Data
         /// 
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<Country>> GetAll()
+        public async Task<IEnumerable<Country>> GetCountries()
         {
             return await db.Countries.OrderBy(x => x.CountryName).ToListAsync();
         }

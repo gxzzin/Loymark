@@ -43,6 +43,6 @@ namespace UsersControl.Models
         public string UserData { get; set; }
 
 
-        // public virtual User User { get; set; }
+        public virtual User User { get; set; }
     }
 }
