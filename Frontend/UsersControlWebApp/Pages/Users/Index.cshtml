@@ -10,13 +10,14 @@
             <span class="fas fa-users"></span>
             List of Users
         </h1>
-        <button type="button" class="btn btn-primary btn-sm font-weight-bold" data-bind="click: () => showCRUDUserModal('create', null);">
+        <button type="button" class="btn btn-primary btn-sm font-weight-bold"
+            data-bind="click: () => showCRUDUserModal('create', null);">
             <span class="fas fa-plus"></span>
             Create New
         </button>
     </div>
     <div class="card-body">
-        
+
         <!-- Search Filters !-->
         <div class="mb-2" data-bind="template: { name: 'filter-users-template', data: searchUserViewModel }"></div>
 
@@ -24,7 +25,7 @@
         <loading-spinner params="loading: loadingUsers, message: 'Loading Users...'"></loading-spinner>
 
         <!-- Table: List of Users!-->
-        <div class="mb-2" data-bind="template: { name: 'list-users-template', if: !loadingUsers() && availableUsers().length > 0 }"></div>
+        <div class="mb-2" data-bind="template: { name: 'list-users-template' }"></div>
 
     </div>
 </div>
@@ -40,15 +41,18 @@
 
 @await Html.PartialAsync("~/Pages/Users/_FilterUsersTemplate.cshtml", Model.SearchUserViewModel)
 
+@await Html.PartialAsync("~/Pages/Shared/_PaginationTemplate.cshtml")
+
 @await Html.PartialAsync("~/Pages/Users/_ListUsersTemplate.cshtml")
 
 @await Html.PartialAsync("~/Pages/Users/_CRUDUsersTemplate.cshtml", Model.CRUDUserViewModel)
 
 
 @section Scripts{
-    @await Html.PartialAsync("~/Pages/Shared/_ValidationScriptsPartial.cshtml")
     <script src="~/js/Users/SearchUserViewModel.js" asp-append-version="true"></script>
     <script src="~/js/Users/UserViewModel.js" asp-append-version="true"></script>
     <script src="~/js/Users/CRUDUserViewModel.js" asp-append-version="true"></script>
     <script src="~/js/Users/IndexUser.js" asp-append-version="true"></script>
+
+    @await Html.PartialAsync("~/Pages/Shared/_ValidationScriptsPartial.cshtml")
 }

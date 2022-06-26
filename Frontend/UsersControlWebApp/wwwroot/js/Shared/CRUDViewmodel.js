@@ -16,7 +16,7 @@ class CRUDViewModel {
                 result = "Save Changes";
 
             } else if (self.Action().toLowerCase() === "delete") {
-                result = "Eliminar";
+                result = "Yes, Delete";
 
             }
 
@@ -78,7 +78,7 @@ class CRUDViewModel {
             }
             else if(self.Action().toLowerCase() === "delete"){
                 result = "bg-danger text-white";
-                self.ModalHeaderTitle("Delet " + self.ModelName());
+                self.ModalHeaderTitle("Delete " + self.ModelName());
             }
             else if(self.Action().toLowerCase() === "details"){
                 result = "bg-secondary text-white";

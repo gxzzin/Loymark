@@ -16,3 +16,11 @@ ko.bindingHandlers.disableInputs = {
         });
     }
 };
+
+//Custom Binding para inicializar el widget jquery datepicker...
+ko.bindingHandlers.jqDatepicker = {
+    init: function (element, valueAccessor) {
+        var options = ko.unwrap(valueAccessor()) || {};
+        $(element).datepicker(options);
+    }
+};

@@ -6,18 +6,22 @@ namespace UsersControlWebApp.ViewModels.Users
     public class CRUDUserViewModel
     {
         [Required]
-        [StringLength(maximumLength: 100)]
+        [StringLength(maximumLength: 100, MinimumLength = 2)]
+        [RegularExpression(@"[a-zñáéíóúüA-ZÁÉÍÓÚÜñÑ\s]{1,}", ErrorMessage = "{0} only allows letters and spaces!")]
         public string Name { get; set; }
 
         [Required]
-        [StringLength(maximumLength: 100)]
+        [StringLength(maximumLength: 100, MinimumLength = 2)]
+        [RegularExpression(@"[a-zñáéíóúüA-ZÁÉÍÓÚÜñÑ\s]{1,}", ErrorMessage = "{0} only allows letters and spaces!")]
         public string LastName { get; set; }
 
         [Required]
         [StringLength(maximumLength: 150)]
+        [DataType(dataType: DataType.EmailAddress)]
         public string Email { get; set; }
 
         [Required]
+        [DataType(dataType: DataType.Date)]
         public DateTime Birthday { get; set; }
 
         [Display(Name = "Telephone Number")]

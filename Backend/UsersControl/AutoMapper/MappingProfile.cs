@@ -10,7 +10,8 @@ namespace UsersControl.AutoMapper
         {
             //Source --> Dest...
             CreateMap<User, UserReadDTO>().ForMember(dest => dest.Birthday, opt => opt.MapFrom(srs => srs.Birthday.ToString("yyyy-MM-dd")))
-                                          .ForMember(dest => dest.CountryNameAndCode, opt => opt.MapFrom(srs => $"{srs.Country.CountryName} ({srs.Country.Alpha3Code})"));
+                                          .ForMember(dest => dest.CountryNameAndCode, opt => opt.MapFrom(srs => $"{srs.Country.CountryName} ({srs.Country.Alpha3Code})"))
+                                          .ForMember(dest => dest.TotalActivities, opt => opt.MapFrom(srs => srs.Activities.Count));
 
             CreateMap<UserCreateDTO, User>();
 

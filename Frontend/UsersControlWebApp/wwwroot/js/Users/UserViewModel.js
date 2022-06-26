@@ -11,5 +11,7 @@ class UserViewModel {
         self.sendNews = ko.observable(data.sendNews);
         self.countryId = ko.observable(data.countryId || "");
         self.countryNameAndCode = ko.observable(data.countryNameAndCode);
+        self.totalActivities = ko.observable(data.totalActivities || 0);
+        
     }
 }

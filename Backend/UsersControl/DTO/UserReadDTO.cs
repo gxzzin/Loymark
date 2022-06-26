@@ -19,5 +19,7 @@ namespace UsersControl.DTO
         public int CountryId { get; set; }
         
         public string CountryNameAndCode { get; set; }
+
+        public int TotalActivities { get; set; }
     }
 }

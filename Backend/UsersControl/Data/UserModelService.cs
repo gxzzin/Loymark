@@ -68,11 +68,21 @@ namespace UsersControl.Data
             return await query.ToListAsync();
         }
 
+        /// <summary>
+        /// Get a User by Id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<User> GetUserById(int id)
         {
             return await db.Users.FindAsync(id);
         }
 
+        /// <summary>
+        /// Create a new User a save it in database.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public async Task<User> CreateUser(User user)
         {
             var result = await db.Users.AddAsync(user);
@@ -80,6 +90,11 @@ namespace UsersControl.Data
             return result.Entity;
         }
 
+        /// <summary>
+        /// Update a user a save changes into database.
+        /// </summary>
+        /// <param name="userToUpdate"></param>
+        /// <returns></returns>
         public async Task<User> UpdateUser(User userToUpdate)
         {
             db.Entry(userToUpdate).State = EntityState.Modified;
@@ -87,10 +102,23 @@ namespace UsersControl.Data
             return userToUpdate;
         }
 
+        /// <summary>
+        /// Delete a user from database.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public async Task DeleteUser(User user)
         {
             db.Entry(user).State = EntityState.Deleted;
             await db.SaveChangesAsync();
         }
+    
+
+        public string ValidateBeforeCreate(UserCreateDTO user)
+        {
+            var errorMessage = string.Empty;
+            return errorMessage;
+        }
+    
     }
 }

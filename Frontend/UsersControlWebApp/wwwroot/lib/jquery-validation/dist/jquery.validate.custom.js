@@ -69,7 +69,7 @@
         }
         var ok = true;
         try {
-            $.datepicker.parseDate('dd/mm/yy', value);
+            $.datepicker.parseDate('yy-mm-dd', value);
         }
         catch (err) {
             ok = false;

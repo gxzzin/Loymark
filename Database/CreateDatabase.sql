@@ -53,11 +53,42 @@ CREATE TABLE UC.Activities
    ,create_date DATETIME NOT NULL DEFAULT GETDATE()
    ,activity_type VARCHAR(3) NOT NULL
    ,activity_description VARCHAR(150) NOT NULL
-   ,id_user VARCHAR(3) NOT NULL
+   ,id_user INT NOT NULL
    ,data_user VARCHAR(MAX) NOT NULL
    ,CONSTRAINT PK_Activities_Id PRIMARY KEY(id_activity)
 )
 GO
+
+-- =============================================
+-- Author:		<BRAYAN GAZO>
+-- Create date: <26-06-2022>
+-- Description:	<USER DEFINE FUNCTION TO CHECK INTEGRITY BETWEEN TABLE USERS AND ACTIVITIES (USER_ID)>
+-- =============================================
+ALTER FUNCTION UC.CheckIfUserExists
+(  
+	@Id_User INT
+   ,@Activity_Type VARCHAR(3)
+)
+RETURNS BIT
+AS
+BEGIN
+    DECLARE @Result BIT = 1;
+
+	---APPLY THIS RULE ONLY WHEN ACTION IS NOT A DELETE ELSE RETURN TRUE (KEEP HISTORIC OF DELETED USERS)...
+	IF @Activity_Type <> 'd'
+	BEGIN
+		SET @Result = (SELECT CASE WHEN EXISTS(SELECT TOP 1 Id FROM UC.Users WHERE Id = @Id_User) THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END);
+	END
+
+	RETURN @Result;
+END
+GO
+
+--ADD CHECK CONTRAINT TO ACTIVITIES TABLE...
+ALTER TABLE UC.Activities 
+ADD CONSTRAINT CK_CheckIfUserExists
+CHECK (UC.CheckIfUserExists(id_user, activity_type) = 1)
+
 -- =======================================================================================
 -- Author:		<BRAYAN GAZO>
 -- Create date: <26/06/2022>

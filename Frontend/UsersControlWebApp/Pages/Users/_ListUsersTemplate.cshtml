@@ -1,32 +1,59 @@
 <template id="list-users-template">
-    <table class="table table-sm table-hover">
+    <!--Table: List of User -->
+    <table class="table table-sm table-hover"
+        data-bind="if: !$root.loadingUsers() && $root.availableUsers().length > 0">
+        <caption class="small font-weight-bold">
+            <span data-bind="text: $root.searchUserViewModel().totalRecords"></span>
+            record (s) in <span data-bind="text: $root.searchUserViewModel().totalPages"></span>
+            page (s).
+        </caption>
         <thead class="thead-light">
             <tr>
                 <th class="text-center font-weight-bold" scope="col">#</th>
                 <th class="text-left" scope="col">Name</th>
                 <th class="text-left" scope="col">Last Name</th>
                 <th class="text-left" scope="col">Country</th>
+                <th class="text-center" scope="col">Activities</th>
                 <th class="text-center" scope="col">Actions</th>
             </tr>
         </thead>
         <tbody data-bind="foreach: $root.availableUsers">
             <tr>
-                <th class="text-center align-middle font-weight-bold" scope="row" data-bind="text: $index() + 1"></th>
+                <th class="text-center align-middle font-weight-bold" scope="row"
+                    data-bind="text: ((($root.searchUserViewModel().page() - 1) * $root.searchUserViewModel().recordsPerPage()) + $index() + 1)"></th>
                 <td class="text-left" data-bind="text: name"></td>
                 <td class="text-left" data-bind="text: lastName"></td>
                 <td class="text-left" data-bind="text: countryNameAndCode"></td>
+                <td class="text-center font-weight-bold text-warning">
+                    <span class="fas fa-history"></span>
+                    <span data-bind="text: totalActivities"></span>
+                </td>
                 <td class="text-center align-middle">
-                    <button type="button" class="btn btn-outline-danger btn-sm" data-bind="click: () => $root.showCRUDUserModal('delete', $data);">
+                    <button type="button" class="btn btn-outline-danger btn-sm"
+                        data-bind="click: () => $root.showCRUDUserModal('delete', $data);">
                         <span class="fas fa-trash-alt"></span>
                     </button>
-                     <button type="button" class="btn btn-outline-secondary btn-sm" data-bind="click: () => $root.showCRUDUserModal('details', $data);">
+                    <button type="button" class="btn btn-outline-secondary btn-sm"
+                        data-bind="click: () => $root.showCRUDUserModal('details', $data);">
                         <span class="fas fa-info-circle"></span>
                     </button>
-                     <button type="button" class="btn btn-outline-success btn-sm" data-bind="click: () => $root.showCRUDUserModal('edit', $data);">
+                    <button type="button" class="btn btn-outline-success btn-sm"
+                        data-bind="click: () => $root.showCRUDUserModal('edit', $data);">
                         <span class="fas fa-edit"></span>
                     </button>
                 </td>
             </tr>
         </tbody>
     </table>
+
+    <!--alert: No users -->
+    <!--ko if: $root.availableUsers().length <= 0 && $root.loadingUsers() === false -->
+    <div class="alert alert-warning alert-dismissible animated flash mb-0" role="alert">
+        <span class="fas fa-exclamation-triangle"></span> ¡No Users to show!
+    </div>
+    <!--/ko-->
+
+    <!--ko if: $root.loadingUsers() === false -->
+    <div data-bind="template: { name: 'pagination-template', data: $root.paginationUsersViewModel }"></div>
+    <!--/ko-->
 </template>

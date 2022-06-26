@@ -12,19 +12,19 @@ namespace UsersControl.Models
         public int Id { get; set; }
 
         [Required]
-        [StringLength(maximumLength: 100)]
-        // [RegularExpression(pattern: @"")]
+        [StringLength(maximumLength: 100, MinimumLength = 2)]
+        [RegularExpression(@"[a-zñáéíóúüA-ZÁÉÍÓÚÜñÑ\s]{1,}", ErrorMessage = "{0} only allows letters and spaces!")]
         public string Name { get; set; }
 
         [Required]
-        [StringLength(maximumLength: 100)]
         [Display(Name = "Last Name")]
-        // [RegularExpression(pattern: @"")]|
+        [StringLength(maximumLength: 100, MinimumLength = 2)]
+        [RegularExpression(@"[a-zñáéíóúüA-ZÁÉÍÓÚÜñÑ\s]{1,}", ErrorMessage = "{0} only allows letters and spaces!")]
         public string LastName { get; set; }
 
         [Required]
         [StringLength(maximumLength: 150)]
-        // [RegularExpression(pattern: @"")]|
+        [DataType(dataType: DataType.EmailAddress)]
         public string Email { get; set; }
 
         [Required]
@@ -46,12 +46,12 @@ namespace UsersControl.Models
         public virtual Country Country { get; set; }
 
 
-        // public virtual ICollection<Activity> Activities { get; set; }
+        public virtual ICollection<Activity> Activities { get; set; }
 
 
         public User()
         {
-            // this.Activities = new HashSet<Activity>();
+            this.Activities = new HashSet<Activity>();
         }
 
     }
