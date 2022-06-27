@@ -67,7 +67,7 @@ namespace UsersControl.Controllers
                 return CreatedAtRoute(nameof(GetUserById), new { Id = userReadDTO.Id }, userReadDTO);
             }
 
-            ModelState.AddModelError("Errors", errorMessage);
+            ModelState.AddModelError("errors", errorMessage);
             return BadRequest(ModelState);
         }
 
@@ -79,15 +79,15 @@ namespace UsersControl.Controllers
             var errorMessage = string.Empty;
             if (userModel != null)
             {
+                mapper.Map<UserUpdateDTO, User>(updateUserDTO, userModel);
                 errorMessage = modelService.ValidateBeforeUpdate(userModel);
                 if (string.IsNullOrEmpty(errorMessage))
                 {
-                    mapper.Map<UserUpdateDTO, User>(updateUserDTO, userModel);
                     await modelService.UpdateUser(userModel);
                     return NoContent();
                 }
 
-                ModelState.AddModelError("Errors", errorMessage);
+                ModelState.AddModelError("errors", errorMessage);
                 return BadRequest(ModelState);
             }
 
@@ -108,8 +108,8 @@ namespace UsersControl.Controllers
                     await modelService.DeleteUser(userModel);
                     return NoContent();
                 }
-                
-                ModelState.AddModelError("Errors", errorMessage);
+
+                ModelState.AddModelError("errors", errorMessage);
                 return BadRequest(ModelState);
             }
 

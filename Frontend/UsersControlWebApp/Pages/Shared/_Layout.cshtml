@@ -25,13 +25,10 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Users/Index">Users</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Activities/Users">Activities</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Activities/Index">Activities</a>
                         </li>
                     </ul>
                 </div>
@@ -61,7 +58,7 @@
     <script src="~/js/Shared/PaginationViewModel.js" asp-append-version="true"></script>
     <script src="~/js/Shared/SearchViewModel.js" asp-append-version="true"></script>
     <script src="~/js/Shared/CRUDViewModel.js" asp-append-version="true"></script>
-    <script src="~/js/Shared/site.js" asp-append-version="true"></script>
+    <script src="~/js/Shared/site.js"></script>
 
     @RenderSection("Scripts", required: false)
 </body>

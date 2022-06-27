@@ -23,10 +23,9 @@ namespace UsersControlWebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
-            // .AddRazorPagesOptions(options => {
-            //     //  options.Conventions.AddPageRoute("/Activities/Index", "/Activities/User/{Id}");
-            // });
+            services.AddRazorPages().AddRazorPagesOptions(options => {
+                 options.Conventions.AddPageRoute("/Users/Index", "");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

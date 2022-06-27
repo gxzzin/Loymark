@@ -119,3 +119,20 @@ const UsersControlWebApp = {
 $.datepicker.setDefaults({
     dateFormat: 'yy-mm-dd'
 });
+
+
+//Catch ajax requests errors..
+$(function () {
+    $(document).ajaxError(function (event, jqxhr, settings, thrownError) {
+        switch (jqxhr.status) {
+            case 400:
+                {
+                    alert(jqxhr.responseJSON.errors);
+                }
+                break;
+        
+            default:
+                alert("An error has occurred processing your request. Please try again.");
+        }
+    });
+});

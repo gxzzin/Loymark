@@ -52,7 +52,7 @@ INSERT [UC].[Users] ([Id], [Name], [LastName], [Email], [Birthday], [TelephoneNu
 SET IDENTITY_INSERT [UC].[Users] OFF
 GO
 
-DISABLE TRIGGER [UC].[TrgUserAudit] ON UC.[Users]
+ENABLE TRIGGER [UC].[TrgUserAudit] ON UC.[Users]
 GO
 
 SET IDENTITY_INSERT [UC].[Activities] ON 
