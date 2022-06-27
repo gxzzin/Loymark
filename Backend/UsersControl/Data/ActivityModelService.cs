@@ -38,7 +38,7 @@ namespace UsersControl.Data
             //Filter by activity type...
             if (!string.IsNullOrEmpty(searchDTO.ActivityType) && (new string[]{ "i", "u", "d"}).Contains(searchDTO.ActivityType))
             {
-                query = query.Where(x => x.ActivityType.Trim().Contains(searchDTO.ActivityType.Trim()));
+                query = query.Where(x => x.ActivityType.Trim().Equals(searchDTO.ActivityType.Trim()));
             }
 
              //Count Total Records...

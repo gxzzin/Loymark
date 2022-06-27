@@ -76,7 +76,6 @@ body {
 }
 
 
-
 /*#region Estilos e Iconos para jquery.validate.unobstrusive */
 
 .field-validation-error {
@@ -159,3 +158,42 @@ label.invalid {
 }
 
 /*#endregion */
+
+
+/*#region Colores de Fondo de la version 3x de bootstrap */
+
+.bg-light-primary {
+  background-color: #337ab7 !important;
+}
+
+.bg-light-success {
+  background-color: #dcecd5 !important;
+}
+
+.bg-light-info {
+  background-color: #d9edf7 !important;
+}
+
+.bg-light-warning {
+  background-color: #fcf8e3 !important;
+}
+
+.bg-light-danger {
+  background-color: #f2dede !important;
+}
+
+.bg-light-secondary {
+  background-color: #d6d8d9 !important;
+}
+
+.bg-sky-blue {
+  background-color: #75cdd2 !important;
+}
+
+.bg-light-gray {
+  background-color: #dae2ef;
+}
+
+
+
+

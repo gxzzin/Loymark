@@ -1,0 +1,61 @@
+@model UsersControlWebApp.ViewModels.Users.UserReadViewModel
+<template id="selected-user-data-template">
+    <div class="card border-secondary">
+        <div class="card-header bg-light-info">
+            <h1 class="h5 mb-0">
+                <span class="fas fa-user-alt"></span>
+                User Information
+            </h1>
+        </div>
+        <div class="card-body">
+            <fieldset disabled="disabled" data-bind="">
+                <!-- Name, Lastname, Birthday !-->
+                <div class="row mb-1">
+                    <div class="col">
+                        <label asp-for="Name" class="font-weight-bold mb-0"></label>
+                        <input type="text" asp-for="Name" class="form-control form-control-sm" data-bind="value: name">
+                    </div>
+                    <div class="col">
+                        <label asp-for="LastName" class="font-weight-bold mb-0"></label>
+                        <input type="text" asp-for="LastName" class="form-control form-control-sm"
+                            data-bind="value: lastName">
+                    </div>
+                    <div class="col">
+                        <label asp-for="Birthday" class="font-weight-bold mb-0"></label>
+                        <input type="text" asp-for="Birthday" class="form-control form-control-sm date"
+                            data-bind="value: birthday">
+                    </div>
+                </div>
+                <!-- Email, Telephone Number, Send News !-->
+                <div class="row mb-1">
+                    <div class="col">
+                        <label asp-for="Email" class="font-weight-bold mb-0"></label>
+                        <input asp-for="Email" class="form-control form-control-sm" data-bind="value: email">
+                    </div>
+                    <div class="col">
+                        <label asp-for="TelephoneNumber" class="font-weight-bold mb-0"></label>
+                        <input asp-for="TelephoneNumber" class="form-control form-control-sm"
+                            data-bind="value: telephoneNumber">
+                    </div>
+                    <div class="col">
+                        <label asp-for="SendNews" class="font-weight-bold mb-0"></label>
+                        <input type="text" asp-for="SendNews" class="form-control form-control-sm"
+                            data-bind="value: ko.unwrap(sendNews) ? 'Yes' : 'No'">
+                    </div>
+                </div>
+                <!--Residence Country !-->
+                <div class="row mb-1">
+                    <div class="col">
+                        <label asp-for="CountryNameAndCode" class="font-weight-bold mb-0"></label>
+                        <input asp-for="CountryNameAndCode" class="form-control form-control-sm"
+                            data-bind="value: countryNameAndCode">
+                    </div>
+                </div>
+            </fieldset>
+
+            <!--Spinner: Loading Users-->
+            <loading-spinner params="loading: $root.loadingUser, message: 'Loading User Data...'"></loading-spinner>
+        </div>
+    </div>
+
+</template>

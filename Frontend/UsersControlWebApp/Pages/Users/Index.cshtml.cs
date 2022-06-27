@@ -11,9 +11,9 @@ namespace UsersControlWebApp.Pages
 {
     public class IndexUserModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly ILogger<IndexUserModel> _logger;
 
-        public IndexUserModel(ILogger<IndexModel> logger)
+        public IndexUserModel(ILogger<IndexUserModel> logger)
         {
             _logger = logger;
             SearchUserViewModel = new SearchUserViewModel();
@@ -24,9 +24,11 @@ namespace UsersControlWebApp.Pages
 
         public CRUDUserViewModel CRUDUserViewModel { get; set; }
 
+        public string UrlActivities { get; set; }
+
         public void OnGet()
         {
-
+            UrlActivities =  Url.Page("/Activities/Index", values: new { id = 0 });
         }
     }
 }

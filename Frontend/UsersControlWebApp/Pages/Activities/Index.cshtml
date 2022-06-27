@@ -1,0 +1,56 @@
+@page "{id:int?}"
+@model IndexActivityModel
+@{
+    ViewData["Title"] = "User Activities";
+}
+
+<div class="card border-secondary">
+    <div class="card-header bg-light-warning text-dark d-flex justify-content-between">
+        <h1 class="h4 mb-0">
+            <span class="fas fa-history"></span>
+            User Activities
+        </h1>
+    </div>
+    <div class="card-body">
+
+        <input id="JsonData" value="@ViewData["JsonData"]" type="hidden">
+
+        <!-- Selected User Data-->
+        <div class="mb-2" data-bind="template: { name: 'selected-user-data-template', data: selectedUserViewModel, if: selectedUserViewModel }">
+        </div>
+
+        <!-- Filters: Activities-->
+        <div class="mb-2" data-bind="template: { name: 'filter-activities-template', data: searchActivityViewModel, if: !loadingUser() }">
+        </div>
+
+        <!--Spinner: Loading Activities-->
+        <loading-spinner params="loading: loadingActivities, message: 'Loading Activities...'"></loading-spinner>
+
+        <!-- Table: List of Activities!-->
+        <div class="mb-2" data-bind="template: { name: 'list-activities-template', if: !loadingActivities() }"></div>
+
+    </div>
+</div>
+
+
+<!--Confirm Action Component-->
+@* <confirm-action-modal params="viewModel: confirmActionModal"></confirm-action-modal> *@
+
+@await Html.PartialAsync("~/Pages/Shared/_LoadingSpinnerTemplate.cshtml")
+
+@await Html.PartialAsync("~/Pages/Shared/_PaginationTemplate.cshtml")
+
+@await Html.PartialAsync("~/Pages/Activities/_SelectedUserTemplate.cshtml", Model.UserReadViewModel)
+
+@await Html.PartialAsync("~/Pages/Activities/_FilterActivitiesTemplate.cshtml", Model.SearchActivityViewModel)
+
+@await Html.PartialAsync("~/Pages/Activities/_ListActivitiesTemplate.cshtml")
+
+
+
+@section Scripts{
+<script src="~/js/Activities/SearchActivityViewModel.js" asp-append-version="true"></script>
+<script src="~/js/Users/UserViewModel.js" asp-append-version="true"></script>
+<script src="~/js/Activities/ActivityViewModel.js" asp-append-version="true"></script>
+<script src="~/js/Activities/IndexActivity.js" asp-append-version="true"></script>
+}

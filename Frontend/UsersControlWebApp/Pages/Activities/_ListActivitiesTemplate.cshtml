@@ -1,0 +1,43 @@
+<template id="list-activities-template">
+    <!--Table: List of Activities -->
+    <table class="table table-sm table-hover"
+        data-bind="if: !$root.loadingActivities() && $root.availableActivities().length > 0">
+        <caption class="small font-weight-bold">
+            <span data-bind="text: $root.searchActivityViewModel().totalRecords"></span>
+            record (s) in <span data-bind="text: $root.searchActivityViewModel().totalPages"></span>
+            page (s).
+        </caption>
+        <thead class="thead-light">
+            <tr>
+                <th class="text-center font-weight-bold" scope="col">#</th>
+                <th class="text-left" scope="col">Actity Date</th>
+                <th class="text-left" scope="col">User Afected</th>
+                <th class="text-left" scope="col">Actity Details</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: $root.availableActivities">
+            <tr>
+                <th class="text-center align-middle font-weight-bold" scope="row"
+                    data-bind="text: ((($root.searchActivityViewModel().page() - 1) * $root.searchActivityViewModel().recordsPerPage()) + $index() + 1)">
+                </th>
+                <td class="text-left" data-bind="text: createDate"></td>
+                <td class="text-left" data-bind="with: user">
+                    <span data-bind="text: name"></span>
+                    <span data-bind="text: lastName"></span>
+                </td>
+                <td class="text-left" data-bind="text: activityDescription"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!--alert: No users -->
+    <!--ko if: $root.availableActivities().length <= 0 && $root.loadingActivities() === false -->
+    <div class="alert alert-warning alert-dismissible animated flash mb-0" role="alert">
+        <span class="fas fa-exclamation-triangle"></span> ¡No Data to show!
+    </div>
+    <!--/ko-->
+
+    <!--ko if: $root.loadingActivities() === false -->
+    <div data-bind="template: { name: 'pagination-template', data: $root.paginationActivitiesViewModel }"></div>
+    <!--/ko-->
+</template>

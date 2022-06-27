@@ -20,7 +20,8 @@
         <tbody data-bind="foreach: $root.availableUsers">
             <tr>
                 <th class="text-center align-middle font-weight-bold" scope="row"
-                    data-bind="text: ((($root.searchUserViewModel().page() - 1) * $root.searchUserViewModel().recordsPerPage()) + $index() + 1)"></th>
+                    data-bind="text: ((($root.searchUserViewModel().page() - 1) * $root.searchUserViewModel().recordsPerPage()) + $index() + 1)">
+                </th>
                 <td class="text-left" data-bind="text: name"></td>
                 <td class="text-left" data-bind="text: lastName"></td>
                 <td class="text-left" data-bind="text: countryNameAndCode"></td>
@@ -41,6 +42,14 @@
                         data-bind="click: () => $root.showCRUDUserModal('edit', $data);">
                         <span class="fas fa-edit"></span>
                     </button>
+                    @{
+                        var urlActivity = @Url.Page("/Activities/Index", values: new { id = 0 });
+                        urlActivity = urlActivity.Remove(urlActivity.Length - 1);
+                        <a class="btn btn-outline-warning btn-sm" target="_blank"
+                            data-bind="attr: { href: '@urlActivity' + ko.unwrap(id) }">
+                            <span class="fas fa-eye"></span>
+                        </a>
+                    }
                 </td>
             </tr>
         </tbody>

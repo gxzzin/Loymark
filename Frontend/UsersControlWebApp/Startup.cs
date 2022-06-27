@@ -24,6 +24,9 @@ namespace UsersControlWebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            // .AddRazorPagesOptions(options => {
+            //     //  options.Conventions.AddPageRoute("/Activities/Index", "/Activities/User/{Id}");
+            // });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

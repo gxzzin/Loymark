@@ -19,6 +19,7 @@ const UsersControlWebApp = {
     },
 };
 
+
 //Agregar llamadas del web api...
 (function () {
     if (typeof UsersControlWebApp != "undefined") {
@@ -97,11 +98,24 @@ const UsersControlWebApp = {
                     complete: params.complete
                 });
             },
+            getActivities: function (params) {
+                params.url = params.url || "Activities";
+
+                return $.ajax({
+                    url: UsersControlWebApp.apiUrl + params.url,
+                    method: "get",
+                    data: params.data,
+                    dataType: "json",
+                    beforeSend: params.beforeSend,
+                    complete: params.complete
+                });
+            }
         }
     }
 })();
 
 
+//Define the default format for datepicker..
 $.datepicker.setDefaults({
     dateFormat: 'yy-mm-dd'
 });

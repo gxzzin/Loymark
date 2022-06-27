@@ -1,0 +1,26 @@
+@model ViewModels.Activities.SearchActivityViewModel
+
+<template id="filter-activities-template">
+    <div class="card border-dark">
+        <div class="card-header bg-light-success text-dark">
+            <h1 class="h5 mb-0">
+                <span class="fas fa-filter"></span>
+                Filter Activities
+            </h1>
+        </div>
+        <div class="card-body">
+            <form action="#" method="get" data-bind="submit: $root.getActivities">
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="ActivityType" class="font-weight-bold mb-0" for="search-name"></label>
+                        <select class="form-control form-control-sm" asp-for="ActivityType" 
+                                asp-items="Model.AvailableActivityTypes" data-bind="value: activityType">
+
+                        </select> 
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</template>
