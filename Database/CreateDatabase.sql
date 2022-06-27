@@ -64,7 +64,7 @@ GO
 -- Create date: <26-06-2022>
 -- Description:	<USER DEFINE FUNCTION TO CHECK INTEGRITY BETWEEN TABLE USERS AND ACTIVITIES (USER_ID)>
 -- =============================================
-ALTER FUNCTION UC.CheckIfUserExists
+CREATE FUNCTION UC.CheckIfUserExists
 (  
 	@Id_User INT
    ,@Activity_Type VARCHAR(3)
@@ -88,6 +88,7 @@ GO
 ALTER TABLE UC.Activities 
 ADD CONSTRAINT CK_CheckIfUserExists
 CHECK (UC.CheckIfUserExists(id_user, activity_type) = 1)
+GO
 
 -- =======================================================================================
 -- Author:		<BRAYAN GAZO>
