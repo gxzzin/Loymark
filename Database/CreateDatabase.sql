@@ -112,7 +112,8 @@ BEGIN
 	--IF IT IS AN INSERT OR UPDATE...
 	IF EXISTS (SELECT 0 FROM inserted)
 	BEGIN
-		SET @DataUser = TRIM('[]' FROM (SELECT * FROM inserted FOR JSON PATH)); --INSERT OR DELETE, ROW AFFECTED IS GONNA BE IN INSERTED....
+		--SET @DataUser = TRIM('[]' FROM (SELECT * FROM inserted FOR JSON PATH)); --INSERT OR DELETE, ROW AFFECTED IS GONNA BE IN INSERTED....
+		SET @DataUser =  REPLACE(REPLACE((SELECT * FROM inserted FOR JSON PATH), '[', ''), ']', '');
 		IF EXISTS (SELECT 0 FROM deleted) --IT IS AN UPDATE...
 		BEGIN 
 			INSERT INTO UC.Activities
@@ -151,7 +152,8 @@ BEGIN
 	END 
 	ELSE --ELSE IT IS A DELETE...
 	BEGIN
-	   SET @DataUser = TRIM('[]' FROM (SELECT * FROM deleted FOR JSON PATH));
+	   --SET @DataUser = TRIM('[]' FROM (SELECT * FROM deleted FOR JSON PATH));
+	   SET @DataUser =  REPLACE(REPLACE((SELECT * FROM inserted FOR JSON PATH), '[', ''), ']', '');
 	   INSERT INTO UC.Activities
 	   (
 			create_date 
