@@ -186,11 +186,11 @@ namespace UsersControl.Data
             var errorMessage = string.Empty;
 
             //Si se quisiera validar integridad referencial entre la relacion User -> Activities..
-            if (user.Activities.Any())
-            {
-                errorMessage = $"Sorry, we can not delete the user because it has {user.Activities.Count} activities.";
-                return errorMessage;
-            }
+            // if (user.Activities.Any())
+            // {
+            //     errorMessage = $"Sorry, we can not delete the user because it has {user.Activities.Count} activities.";
+            //     return errorMessage;
+            // }
 
             return errorMessage;
         }
